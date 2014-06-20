@@ -1,0 +1,23 @@
+﻿@model IEnumerable<MongoBaseball.SimpleBatter>
+
+@{
+    ViewBag.Title = "Average";
+}
+
+<h2>Batting Average</h2>
+
+<form method="post" action="/batting/average">
+    <label for="year">Year: </label>
+    <input name="id" id="id" type="text" />
+    <button type="submit">Go!</button>
+</form>
+
+@if (Model.Count() > 0)
+{
+    <table class="table">
+        <thead><tr><td>Year</td><td>Name</td><td>Average</td></tr></thead>
+        @foreach (var batter in Model) {
+        <tr><td>@batter.Year</td><td>@batter.Name</td><td>@batter.AVG</td></tr>
+        }
+    </table>
+}

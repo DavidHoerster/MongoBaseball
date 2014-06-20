@@ -1,0 +1,24 @@
+﻿@model IEnumerable<MongoBaseball.Web.Models.SimpleRunsCreated>
+
+@{
+    ViewBag.Title = "Runs Created";
+}
+
+<h2>Runs Created</h2>
+
+<form method="post" action="/batting/runscreated">
+    <label for="year">Year: </label>
+    <input name="id" id="id" type="text" />
+    <button type="submit">Go!</button>
+</form>
+
+@if (Model.Count() > 0)
+{
+    <table class="table">
+        <thead><tr><td>Year</td><td>Name</td><td>Runs Created</td></tr></thead>
+        @foreach (var batter in Model)
+        {
+            <tr><td>@batter.Year</td><td>@batter.Name</td><td>@batter.RunsCreated</td></tr>
+        }
+    </table>
+}
