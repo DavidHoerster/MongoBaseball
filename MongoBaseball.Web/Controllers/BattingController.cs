@@ -149,7 +149,7 @@ namespace MongoBaseball.Web.Controllers
         public ActionResult RunsCreated(Int32? id)
         {
             var rc = new RunsCreated(_db, id.HasValue ? "batting" : "battingLifetime");
-            var results = rc.GetPlayerRunsCreated(id.Value);
+            var results = rc.GetPlayerRunsCreated(id);
 
             var nameResolver = new NameResolver<SimpleRunsCreated>(_db);
             nameResolver.ResolveNames(results);
@@ -168,7 +168,7 @@ namespace MongoBaseball.Web.Controllers
         public ActionResult TeamRunsCreated(Int32? id)
         {
             var rc = new RunsCreatedTeam(_db, id.HasValue ? "batting" : "battingLifetime");
-            var results = rc.GetTeamRunsCreated(id.Value);
+            var results = rc.GetTeamRunsCreated(id);
 
             return View(results);
         }

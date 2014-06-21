@@ -18,7 +18,7 @@
         <thead><tr><td>Year</td><td>Name</td><td>Total Bases</td><td>Salary</td><td>Cost Per Base</td></tr></thead>
         @foreach (var batter in Model)
         {
-            <tr><td>@batter.Year</td><td>@batter.Name</td><td>@batter.TotalBases</td><td>@batter.Salary</td><td>@batter.CostPerBase</td></tr>
+            <tr><td>@batter.Year</td><td>@batter.Name</td><td>@batter.TotalBases</td><td>@batter.Salary.ToString("C")</td><td>@Math.Round(batter.CostPerBase, 2).ToString("C")</td></tr>
         }
     </table>
 }

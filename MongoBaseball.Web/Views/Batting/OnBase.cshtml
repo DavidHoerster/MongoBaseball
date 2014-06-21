@@ -18,7 +18,7 @@
         <thead><tr><td>Year</td><td>Name</td><td>On Base Percentage</td></tr></thead>
         @foreach (var batter in Model)
         {
-            <tr><td>@batter.Year</td><td>@batter.Name</td><td>@batter.OBP</td></tr>
+            <tr><td>@batter.Year</td><td>@batter.Name</td><td>@Math.Round(batter.OBP, 3)</td></tr>
         }
     </table>
 }
