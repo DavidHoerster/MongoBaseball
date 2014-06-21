@@ -18,7 +18,7 @@
         <thead><tr><td>Year</td><td>Name</td><td>wOBA</td><td>wRAA</td></tr></thead>
         @foreach (var batter in Model)
         {
-            <tr><td>@batter.Year</td><td>@batter.Name</td><td>@batter.WOBA</td><td>@batter.WRAA</td></tr>
+            <tr><td>@batter.Year</td><td>@batter.Name</td><td>@Math.Round(batter.WOBA, 3)</td><td>@Math.Round(batter.WRAA, 3)</td></tr>
         }
     </table>
 }

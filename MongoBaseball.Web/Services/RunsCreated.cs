@@ -19,10 +19,14 @@ namespace MongoBaseball.Web.Services
             _coll = _db.GetCollection<Batting>(collectionName);
         }
 
-        public IList<SimpleRunsCreated> GetPlayerRunsCreated(Int32 year, Int32 limit = 25)
+        public IList<SimpleRunsCreated> GetPlayerRunsCreated(Int32? year, Int32 limit = 25)
         {
             var pipeline = new List<BsonDocument>();
-            pipeline.Add(CreateMatchPipeline(year));
+
+            if (year.HasValue)
+            {
+                pipeline.Add(CreateMatchPipeline(year.Value));
+            }
 
             pipeline.Add(CreateProjectPipeline());
 
