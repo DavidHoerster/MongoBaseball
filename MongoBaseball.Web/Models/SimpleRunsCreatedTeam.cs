@@ -13,5 +13,6 @@ namespace MongoBaseball.Web.Models
         public Int32 Year { get; set; }
         public String TeamId { get; set; }
         public Double RunsCreated { get; set; }
+        public Int32 RealRuns { get; set; }
     }
 }

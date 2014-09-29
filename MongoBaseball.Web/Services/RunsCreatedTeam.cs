@@ -43,7 +43,8 @@ namespace MongoBaseball.Web.Services
                 Id = r["_id"]["TeamId"].AsString,
                 RunsCreated = r["RC"].AsDouble,
                 TeamId = r["_id"]["TeamId"].AsString,
-                Year = r["_id"]["Year"].AsInt32
+                Year = r["_id"]["Year"].AsInt32,
+                RealRuns = r["Runs"].AsInt32
             }).ToList();
             return theResults;
 
@@ -68,7 +69,8 @@ namespace MongoBaseball.Web.Services
                     {"Doubles", new BsonDocument { {"$sum", "$Doubles"}}},
                     {"Triples",new BsonDocument { {"$sum", "$Triples"}}},
                     {"HR", new BsonDocument { {"$sum", "$HomeRuns"}}},
-                    {"AtBats",new BsonDocument { {"$sum", "$AtBats"}}}
+                    {"AtBats",new BsonDocument { {"$sum", "$AtBats"}}},
+                    {"Runs", new BsonDocument{{"$sum", "$Runs"}}}
                 }}
             };
         }
@@ -94,7 +96,8 @@ namespace MongoBaseball.Web.Services
                 {"$project", new BsonDocument{
                     {"RC", new BsonDocument{
                         {"$divide", new BsonArray{mult, divisor}}
-                    }}
+                    }},
+                    {"Runs", 1}
                 }}
             };
 
